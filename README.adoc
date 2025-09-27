@@ -1,0 +1,16 @@
+= Fun_Printer
+== Background
+Doing a *bit* for Halloween and handing out hot dogs. This is a one day coding challange to make a 7-eleven inspired Halloween reciept to give when handing out Hot Dogs. The intention is to be as confusing, hence in the spirit of Halloween both tricking and treating. 
+
+The code is not AI generated and 100% user made garbage. Given more time I am sure I can clean up code and optimize but this is just a Halloween thing.
+
+== Quick Start
+* Copy code to a raspberry Pi (no gui).
+* Creat a python venv and load requiremnts.txt.
+* move 99-escpos.rules into etc/udev/rules.d/
+* call the python script from the end of the bash.rc script
+* Attach https://www.amazon.com/dp/B08V4H7T47?ref=ppx_yo2ov_dt_b_fed_asin_title[this] thermal printer.
+* Attach Just a number pad
+* Attach https://www.amazon.com/dp/B0CC9Y3HY6[this] cash register to thermal printer.
+* restart the system.
+* All done!
