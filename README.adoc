@@ -1,5 +1,7 @@
 = Fun_Printer
+
 == Background
+
 Doing a *bit* for Halloween and handing out hot dogs. This is a one day coding challange to make a 7-eleven inspired Halloween reciept to give when handing out Hot Dogs. The intention is to be as confusing, hence in the spirit of Halloween both tricking and treating. 
 
 The code is not AI generated and 100% user made garbage. Given more time I am sure I can clean up code and optimize but this is just a Halloween thing.
