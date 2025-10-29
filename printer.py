@@ -61,8 +61,8 @@ def main():
 			break
 
 		elif first_input == "1":
-			halloweenies_sold = input("How Many Halloweenies sold?:")
-			meal_combo= input("meal_combo?:")
+			halloweenies_sold = int(input("How Many Halloweenies sold?:"))
+			meal_combo= int(input("meal_combo?:"))
 
 		elif first_input == "2":
 			misc_item       = int(input("Misc Item's: "))
