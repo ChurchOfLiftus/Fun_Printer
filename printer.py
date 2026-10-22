@@ -21,7 +21,7 @@ def print_start(printer): #--{{{
 	printer.text("\n")
 	#--}}}
 
-def print_end(printer,total=0): #--{{{
+def print_end(printer,total=0,cash_given=0): #--{{{
 	# Print last QR section
 	printer.text("\n")
 	printer.text("\n")
@@ -38,7 +38,7 @@ def print_end(printer,total=0): #--{{{
 	printer.cut()
 	printer.text("\n")
 	printer.buzzer(times=2,duration=4)
-	if(total<=0):
+	if(cash_given!=0):
 		printer.cashdraw(2)
 	printer.close()
 	#--}}}
@@ -46,6 +46,7 @@ def print_end(printer,total=0): #--{{{
 def main():
 	customer_number :int = 1;
 	halloweenies_sold=0;
+	cotton_candy     =0;
 	meal_combo       =0;
 	cash_given       =0;
 	misc_item        =0;
@@ -54,7 +55,7 @@ def main():
 	while(1):
 		# We need to figure out what the user wants.
 		print("dogs_sold: "+str(halloweenies_sold)+" meal_combo: "+str(meal_combo))
-		first_input = input("1 for halloween sale, 2 misc, 3 end sale, Press + to clock out:")
+		first_input = input("1 for halloween sale,2 for cotton candy, 3 misc, 4 end sale, Press + to clock out:")
 
 		# First case we are done with the night.
 		if first_input == "+":
@@ -62,14 +63,18 @@ def main():
 
 		elif first_input == "1":
 			halloweenies_sold = int(input("How Many Halloweenies sold?:"))
-			meal_combo= int(input("meal_combo?:"))
+			meal_combo= int(input("meal_combo (chips and drink)?:"))
 
 		elif first_input == "2":
-			misc_item       = int(input("Misc Item's: "))
+			cotton_candy = int(input("How Many Cotton Candies sold?:"))
+
+		# If we sold items such as canned bread
+		elif first_input == "3":
+			misc_item       = int(input("Priced Items items's: "))
 			misc_item_price = float(input("Misc Item price: "))
 			total_price = misc_item*misc_item_price
 
-		elif first_input == "3":
+		elif first_input == "4":
 			if(total_price!=0):
 				print("Total Price: "+str(total_price))
 				cash_given = float(input("cash_given?:"))
@@ -86,6 +91,8 @@ def main():
 				printer.text("Halloweenies"+" x                         "+str(halloweenies_sold)+" = "+str(0.00)+"\n")
 			if(meal_combo!=0):
 				printer.text("  Meal Combo"+" x                         "+str(meal_combo)       +" = "+str(0.00)+"\n")
+			if(cotton_candy!=0):
+				printer.text("Cotton Candy"+" x                         "+str(halloweenies_sold)+" = "+str(0.00)+"\n")
 			if(misc_item!=0):
 				printer.text("Misc Items  "+" x                         "+str(misc_item)        +" = "+str(misc_item*misc_item_price)+"\n")
 			printer.text("\n")
@@ -98,9 +105,10 @@ def main():
 			else:
 				printer.text("Cash stil Due                            "+"{:0.2f}".format(abs(finish_price))+"\n")
 
-			print_end(printer,finish_price)
+			print_end(printer,finish_price,cash_given)
 
 			halloweenies_sold=0;
+			cotton_candy     =0;
 			meal_combo       =0;
 			cash_given       =0;
 			misc_item        =0;
